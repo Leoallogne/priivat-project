@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Mail, MessageCircle, User } from 'lucide-react'
 import { useState } from 'react'
 
@@ -12,15 +11,7 @@ function ContactCTA() {
   }
 
   return (
-    <motion.section
-      variants={{
-        hidden: { opacity: 0, y: 14 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
+    <section
       className="mt-8"
     >
       <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
@@ -84,7 +75,7 @@ function ContactCTA() {
           </p>
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }
 

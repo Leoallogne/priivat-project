@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 
 const testimonials = [
@@ -25,24 +24,10 @@ const testimonials = [
   },
 ]
 
-function TestimonialCard({ item, index }) {
+function TestimonialCard({ item }) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 14, scale: 0.96 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: {
-            duration: 0.55,
-            ease: [0.16, 1, 0.3, 1],
-            delay: index * 0.08,
-          },
-        },
-      }}
-      whileHover={{ scale: 1.02, borderColor: 'rgba(0, 122, 255, 0.25)' }}
-      className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition-[border-color,transform] duration-300"
+    <div
+      className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition-[border-color,transform] duration-300 hover:scale-1.02 hover:border-electric/25"
     >
       <div className="flex items-start gap-3">
         <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5">
@@ -63,32 +48,24 @@ function TestimonialCard({ item, index }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
 function Testimonials() {
   return (
-    <motion.section
-      variants={{
-        hidden: { opacity: 0, y: 14 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
+    <section
       className="mt-8"
     >
       <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
         <h2 className="text-lg font-semibold text-white/90 mb-4">Client Success Stories</h2>
         <div className="grid grid-cols-1 gap-3">
-          {testimonials.map((item, index) => (
-            <TestimonialCard key={item.id} item={item} index={index} />
+          {testimonials.map((item) => (
+            <TestimonialCard key={item.id} item={item} />
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }
 

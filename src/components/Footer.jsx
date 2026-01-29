@@ -1,17 +1,8 @@
-import { motion } from 'framer-motion'
 import { Instagram, Send, Youtube } from 'lucide-react'
 
 function Footer() {
   return (
-    <motion.footer
-      variants={{
-        hidden: { opacity: 0, y: 10 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
+    <footer
       className="mt-8 pb-8"
     >
       <div className="flex flex-col items-center gap-4">
@@ -43,7 +34,7 @@ function Footer() {
 
         <div className="text-xs text-white/45">© 2026 Ronss Traders Syndicate</div>
       </div>
-    </motion.footer>
+    </footer>
   )
 }
 

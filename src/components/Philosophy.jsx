@@ -1,16 +1,6 @@
-import { motion } from 'framer-motion'
-
 function Philosophy() {
   return (
-    <motion.section
-      variants={{
-        hidden: { opacity: 0, y: 14 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
+    <section
       className="mt-8"
     >
       <div className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-md">
@@ -21,7 +11,7 @@ function Philosophy() {
           Berbasis Order Flow &amp; Diperkuat Risk Management Matang.
         </p>
       </div>
-    </motion.section>
+    </section>
   )
 }
 

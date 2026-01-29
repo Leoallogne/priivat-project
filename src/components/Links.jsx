@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { ExternalLink, Instagram, Send, Youtube } from 'lucide-react'
 
 const links = [
@@ -47,21 +46,11 @@ function LinkCard({ item }) {
 
   if (item.variant === 'vip') {
     return (
-      <motion.a
+      <a
         href={item.href}
         target="_blank"
         rel="noreferrer"
-        variants={{
-          hidden: { opacity: 0, y: 14 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-          },
-        }}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 1.02 }}
-        className={`${base} shimmer-overlay hover:brightness-110 ring-1 ring-electric/35 shadow-[0_0_0_1px_rgba(0,122,255,0.22),0_0_40px_rgba(0,122,255,0.18)]`}
+        className={`${base} shimmer-overlay hover:brightness-110 ring-1 ring-electric/35 shadow-[0_0_0_1px_rgba(0,122,255,0.22),0_0_40px_rgba(0,122,255,0.18)] transition-transform hover:scale-1.02`}
       >
         <div className="absolute inset-0 bg-linear-to-b from-electric/15 via-transparent to-transparent" />
         <div className="relative flex items-center justify-between gap-3 px-4 py-4">
@@ -80,26 +69,16 @@ function LinkCard({ item }) {
             <ExternalLink className="h-4 w-4 text-white/70 transition group-hover:text-white" />
           </div>
         </div>
-      </motion.a>
+      </a>
     )
   }
 
   return (
-    <motion.a
+    <a
       href={item.href}
       target={item.href === '#' ? undefined : '_blank'}
       rel={item.href === '#' ? undefined : 'noreferrer'}
-      variants={{
-        hidden: { opacity: 0, y: 14 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 1.02 }}
-      className={`${base} hover:brightness-110 hover:bg-white/7 hover:border-white/15`}
+      className={`${base} hover:brightness-110 hover:bg-white/7 hover:border-white/15 transition-transform hover:scale-1.02`}
     >
       <div className="flex items-center justify-between gap-3 px-4 py-4">
         <div className="flex items-center gap-3">
@@ -112,23 +91,13 @@ function LinkCard({ item }) {
         </div>
         <ExternalLink className="h-4 w-4 text-white/50 transition group-hover:text-white/80" />
       </div>
-    </motion.a>
+    </a>
   )
 }
 
 function Links() {
   return (
-    <motion.section
-      variants={{
-        hidden: { opacity: 1 },
-        visible: {
-          opacity: 1,
-          transition: {
-            delayChildren: 0.25,
-            staggerChildren: 0.12,
-          },
-        },
-      }}
+    <section
       className="mt-7"
     >
       <div className="flex flex-col gap-3">
@@ -136,7 +105,7 @@ function Links() {
           <LinkCard key={item.id} item={item} />
         ))}
       </div>
-    </motion.section>
+    </section>
   )
 }
 

@@ -1,43 +1,67 @@
-import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 import ContactCTA from './components/ContactCTA.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import Links from './components/Links.jsx'
 import MarketStats from './components/MarketStats.jsx'
+import PerformanceChart from './components/PerformanceChart.jsx'
 import Philosophy from './components/Philosophy.jsx'
+import RecentWins from './components/RecentWins.jsx'
+import ShareButton from './components/ShareButton.jsx'
 import Testimonials from './components/Testimonials.jsx'
+import { useSwipeGestures } from './hooks/useSwipeGestures.js'
+import { useNotifications } from './hooks/useNotifications.js'
 
 function App() {
+  const swipeRef = useSwipeGestures(
+    () => console.log('swiped left'),
+    () => console.log('swiped right')
+  )
+  const { sendSignalNotification } = useNotifications()
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      sendSignalNotification({
+        pair: 'EUR/USD',
+        type: 'BUY',
+        entry: '1.0842'
+      })
+    }, 60000)
+
+    return () => clearInterval(interval)
+  }, [sendSignalNotification])
+
   return (
     <div className="min-h-dvh w-full bg-ink text-white">
       <div className="bg-live animate-gradient">
-        <div className="min-h-dvh w-full px-4 py-10">
+        <div className="min-h-dvh w-full px-4 py-6">
           <div className="mx-auto w-full max-w-120">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 1 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.14,
-                  },
-                },
-              }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-md"
+            <div
+              ref={swipeRef}
+              className="space-y-6"
             >
               <Header />
+              
               <Links />
+              
               <Philosophy />
+              
+              <PerformanceChart />
+              
+              <RecentWins />
+              
               <MarketStats />
+              
               <Testimonials />
+              
               <ContactCTA />
+              
               <Footer />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
+      <ShareButton />
     </div>
   )
 }
