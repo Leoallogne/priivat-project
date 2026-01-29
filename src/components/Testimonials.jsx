@@ -1,28 +1,5 @@
 import { Star, Quote } from 'lucide-react'
-
-const testimonials = [
-  {
-    id: 'client1',
-    name: 'Alex Chen',
-    role: 'Day Trader',
-    content: 'Signal accuracy is insane. Risk management guidance saved my portfolio during the last correction.',
-    rating: 5,
-  },
-  {
-    id: 'client2',
-    name: 'Sarah Williams',
-    role: 'Swing Trader',
-    content: 'Order flow analysis here is next level. Finally found a team that actually delivers consistent results.',
-    rating: 5,
-  },
-  {
-    id: 'client3',
-    name: 'Marcus Johnson',
-    role: 'Position Trader',
-    content: 'VIP signals changed the game. Clear entries, exits, and position sizing—no more guesswork.',
-    rating: 5,
-  },
-]
+import { testimonials } from '../data/content'
 
 function TestimonialCard({ item }) {
   return (

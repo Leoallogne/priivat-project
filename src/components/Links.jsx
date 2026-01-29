@@ -1,42 +1,5 @@
-import { ExternalLink, Instagram, Send, Youtube } from 'lucide-react'
-
-const links = [
-  {
-    id: 'vip',
-    title: '🚀 JOIN VIP SIGNAL FREE',
-    href: 'https://t.me/OdfTrade',
-    variant: 'vip',
-    icon: Send,
-  },
-  {
-    id: 'gc',
-    title: 'Grub Clipper & Daget',
-    href: '#',
-    variant: 'standard',
-    icon: ExternalLink,
-  },
-  {
-    id: 'yt',
-    title: 'Ronss Syndicate YT',
-    href: '#',
-    variant: 'standard',
-    icon: Youtube,
-  },
-  {
-    id: 'ig-baron',
-    title: 'Instagram Baron',
-    href: '#',
-    variant: 'standard',
-    icon: Instagram,
-  },
-  {
-    id: 'ig-dapeng',
-    title: 'Instagram Dapeng',
-    href: '#',
-    variant: 'standard',
-    icon: Instagram,
-  },
-]
+import { ExternalLink } from 'lucide-react'
+import { links } from '../data/content'
 
 function LinkCard({ item }) {
   const Icon = item.icon

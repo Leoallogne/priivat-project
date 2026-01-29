@@ -1,39 +1,46 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function useSwipeGestures(onSwipeLeft, onSwipeRight) {
-  const [touchStart, setTouchStart] = useState(0)
-  const [touchEnd, setTouchEnd] = useState(0)
+  const touchStart = useRef(0)
+  const touchEnd = useRef(0)
   const elementRef = useRef(null)
+  
+  // Keep latest callbacks in ref to avoid re-binding listeners
+  const callbacksRef = useRef({ onSwipeLeft, onSwipeRight })
+  
+  useEffect(() => {
+    callbacksRef.current = { onSwipeLeft, onSwipeRight }
+  }, [onSwipeLeft, onSwipeRight])
 
   const minSwipeDistance = 50
-
-  const onTouchStart = (e) => {
-    setTouchEnd(0)
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX)
-  }
-
-  const onTouchEnd = useCallback(() => {
-    if (!touchStart || !touchEnd) return
-    
-    const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > minSwipeDistance
-    const isRightSwipe = distance < -minSwipeDistance
-
-    if (isLeftSwipe && onSwipeLeft) {
-      onSwipeLeft()
-    }
-    if (isRightSwipe && onSwipeRight) {
-      onSwipeRight()
-    }
-  }, [touchStart, touchEnd, onSwipeLeft, onSwipeRight, minSwipeDistance])
 
   useEffect(() => {
     const element = elementRef.current
     if (!element) return
+
+    const onTouchStart = (e) => {
+      touchEnd.current = 0
+      touchStart.current = e.targetTouches[0].clientX
+    }
+
+    const onTouchMove = (e) => {
+      touchEnd.current = e.targetTouches[0].clientX
+    }
+
+    const onTouchEnd = () => {
+      if (!touchStart.current || !touchEnd.current) return
+      
+      const distance = touchStart.current - touchEnd.current
+      const isLeftSwipe = distance > minSwipeDistance
+      const isRightSwipe = distance < -minSwipeDistance
+
+      if (isLeftSwipe && callbacksRef.current.onSwipeLeft) {
+        callbacksRef.current.onSwipeLeft()
+      }
+      if (isRightSwipe && callbacksRef.current.onSwipeRight) {
+        callbacksRef.current.onSwipeRight()
+      }
+    }
 
     element.addEventListener('touchstart', onTouchStart, { passive: true })
     element.addEventListener('touchmove', onTouchMove, { passive: true })
@@ -44,7 +51,7 @@ export function useSwipeGestures(onSwipeLeft, onSwipeRight) {
       element.removeEventListener('touchmove', onTouchMove)
       element.removeEventListener('touchend', onTouchEnd)
     }
-  }, [touchStart, touchEnd, onSwipeLeft, onSwipeRight, onTouchEnd])
+  }, [minSwipeDistance])
 
   return elementRef
 }

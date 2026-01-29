@@ -1,63 +1,6 @@
 import { Trophy, TrendingUp, Clock, DollarSign } from 'lucide-react'
 import { useState, useEffect } from 'react'
-
-const recentWins = [
-  {
-    id: 'win1',
-    pair: 'EUR/USD',
-    type: 'BUY',
-    entry: 1.0842,
-    exit: 1.0898,
-    profit: '+45.8 pips',
-    profitPercent: '+2.3%',
-    time: '12 min ago',
-    status: 'closed'
-  },
-  {
-    id: 'win2',
-    pair: 'GBP/JPY',
-    type: 'SELL',
-    entry: 195.67,
-    exit: 195.12,
-    profit: '+55.0 pips',
-    profitPercent: '+3.1%',
-    time: '28 min ago',
-    status: 'closed'
-  },
-  {
-    id: 'win3',
-    pair: 'XAU/USD',
-    type: 'BUY',
-    entry: 2342.15,
-    exit: 2351.80,
-    profit: '+96.5 pips',
-    profitPercent: '+4.1%',
-    time: '45 min ago',
-    status: 'closed'
-  },
-  {
-    id: 'win4',
-    pair: 'USD/JPY',
-    type: 'SELL',
-    entry: 157.23,
-    exit: 156.88,
-    profit: '+35.0 pips',
-    profitPercent: '+2.2%',
-    time: '1 hour ago',
-    status: 'closed'
-  },
-  {
-    id: 'win5',
-    pair: 'BTC/USD',
-    type: 'BUY',
-    entry: 67842,
-    exit: 68235,
-    profit: '+393 pts',
-    profitPercent: '+5.8%',
-    time: '2 hours ago',
-    status: 'closed'
-  }
-]
+import { recentWins } from '../data/content'
 
 function WinCard({ item }) {
   const isBuy = item.type === 'BUY'

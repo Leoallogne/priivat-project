@@ -17,15 +17,23 @@ function PerformanceChart() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setChartData(prev => prev.map(item => ({
-        ...item,
-        open: item.open + (Math.random() - 0.5) * 0.002,
-        high: item.high + (Math.random() - 0.5) * 0.002,
-        low: item.low + (Math.random() - 0.5) * 0.002,
-        close: item.close + (Math.random() - 0.5) * 0.002,
-        volume: Math.max(1000, item.volume + Math.floor((Math.random() - 0.5) * 200)),
-        winRate: Math.max(75, Math.min(95, item.winRate + (Math.random() - 0.5) * 2))
-      })))
+      setChartData(prev => {
+        const newData = [...prev]
+        const lastItem = { ...newData[newData.length - 1] }
+        
+        // Simulate price movement
+        const change = (Math.random() - 0.5) * 0.001
+        lastItem.close = Number((lastItem.close + change).toFixed(4))
+        
+        // Update high/low if close moves outside
+        if (lastItem.close > lastItem.high) lastItem.high = lastItem.close
+        if (lastItem.close < lastItem.low) lastItem.low = lastItem.close
+        
+        lastItem.volume = Math.max(1000, lastItem.volume + Math.floor((Math.random() - 0.5) * 50))
+        
+        newData[newData.length - 1] = lastItem
+        return newData
+      })
     }, 3000)
 
     return () => clearInterval(interval)
