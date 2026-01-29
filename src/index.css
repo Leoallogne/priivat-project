@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: rgba(255, 255, 255, 0.9);
+  min-height: 100dvh;
+}
+
+.bg-live {
+  background-image:
+    radial-gradient(1200px 700px at 20% 10%, rgba(0, 122, 255, 0.14), transparent 55%),
+    radial-gradient(900px 600px at 90% 70%, rgba(255, 255, 255, 0.06), transparent 60%),
+    linear-gradient(120deg, rgba(0, 122, 255, 0.10), rgba(255, 255, 255, 0.03), rgba(0, 122, 255, 0.08));
+  background-size: 300% 300%;
+}
+
+.shimmer-overlay {
+  position: relative;
+}
+
+.shimmer-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.10) 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.10) 65%,
+    transparent 100%
+  );
+  opacity: 0.8;
+  animation: shimmer 2.4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
