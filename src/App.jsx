@@ -9,8 +9,8 @@ import MarketStats from './components/MarketStats.jsx'
 import Philosophy from './components/Philosophy.jsx'
 import ShareButton from './components/ShareButton.jsx'
 import Ticker from './components/Ticker.jsx'
-import SignalPreview from './components/SignalPreview.jsx'
 import BackgroundEffect from './components/BackgroundEffect.jsx'
+import CryptoCarousel from './components/CryptoCarousel.jsx'
 import { useSwipeGestures } from './hooks/useSwipeGestures.js'
 import { useNotifications } from './hooks/useNotifications.js'
 
@@ -81,11 +81,11 @@ function App() {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <SignalPreview />
-              </motion.div>
-              
-              <motion.div variants={itemVariants}>
                 <Links />
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <CryptoCarousel />
               </motion.div>
               
               <motion.div variants={itemVariants}>
