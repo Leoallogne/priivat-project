@@ -32,7 +32,7 @@ function Footer() {
           </a>
         </div>
 
-        <div className="text-xs text-white/45">© 2026 Ronss Traders Syndicate</div>
+        <div className="text-xs text-white/45">© 2026 odfTrade</div>
       </div>
     </footer>
   )

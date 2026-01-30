@@ -1,28 +1,68 @@
 import { TrendingUp, Target, Activity } from 'lucide-react'
+// eslint-disable-next-line no-unused-vars
+import { motion, useSpring, useInView } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 const stats = [
   {
     id: 'winrate',
     label: 'Win Rate',
-    value: '87.3%',
+    value: 87.3,
+    suffix: '%',
     icon: Target,
     description: 'Last 30 days',
   },
   {
     id: 'return',
     label: 'Avg Return',
-    value: '+42.8%',
+    value: 42.8,
+    prefix: '+',
+    suffix: '%',
     icon: TrendingUp,
     description: 'Monthly average',
   },
   {
     id: 'signals',
     label: 'Signals Sent',
-    value: '1,247',
+    value: 1247,
+    suffix: '',
     icon: Activity,
     description: 'Total delivered',
   },
 ]
+
+function Counter({ value, prefix = '', suffix = '' }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-20%" })
+  const springValue = useSpring(0, {
+    stiffness: 50,
+    damping: 20,
+    duration: 2000
+  })
+
+  useEffect(() => {
+    if (isInView) {
+      springValue.set(value)
+    }
+  }, [isInView, value, springValue])
+
+  // eslint-disable-next-line no-unused-vars
+  const displayValue = useSpring(springValue)
+
+  useEffect(() => {
+    return springValue.on("change", (latest) => {
+      if (ref.current) {
+        // Handle integers vs decimals
+        const formatted = Number.isInteger(value) 
+          ? Math.floor(latest).toLocaleString() 
+          : latest.toFixed(1)
+        ref.current.textContent = `${prefix}${formatted}${suffix}`
+      }
+    })
+  }, [springValue, value, prefix, suffix])
+
+  return <span ref={ref} />
+}
 
 function StatCard({ item }) {
   const Icon = item.icon
@@ -36,7 +76,9 @@ function StatCard({ item }) {
           <Icon className="h-5 w-5 text-electric" />
         </div>
         <div className="text-right">
-          <div className="text-lg font-semibold text-white">{item.value}</div>
+          <div className="text-lg font-semibold text-white">
+            <Counter value={item.value} prefix={item.prefix} suffix={item.suffix} />
+          </div>
           <div className="text-xs text-white/60">{item.description}</div>
         </div>
       </div>
