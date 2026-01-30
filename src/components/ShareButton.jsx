@@ -1,5 +1,6 @@
 import { Share2, Copy, Check } from 'lucide-react'
 import { useState } from 'react'
+import { trackEvent } from '../utils/analytics'
 
 function ShareButton() {
   const [copied, setCopied] = useState(false)
@@ -25,6 +26,7 @@ function ShareButton() {
   }
 
   const copyToClipboard = async () => {
+    trackEvent('Share', 'Copy Link', 'Clipboard')
     try {
       await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`)
       setCopied(true)
@@ -35,6 +37,7 @@ function ShareButton() {
   }
 
   const shareToSocial = (platform) => {
+    trackEvent('Share', 'Click Social', platform)
     const urls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
@@ -55,6 +58,7 @@ function ShareButton() {
         <button
           onClick={handleShare}
           className="grid h-14 w-14 place-items-center rounded-full border border-white/10 bg-electric/20 backdrop-blur-md shadow-lg transition hover:bg-electric/30"
+          aria-label="Share this page"
         >
           {copied ? (
             <Check className="h-6 w-6 text-green-400" />
@@ -67,24 +71,28 @@ function ShareButton() {
           <button
             onClick={() => shareToSocial('telegram')}
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
+            aria-label="Share on Telegram"
           >
             Telegram
           </button>
           <button
             onClick={() => shareToSocial('twitter')}
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
+            aria-label="Share on Twitter"
           >
             Twitter
           </button>
           <button
             onClick={() => shareToSocial('facebook')}
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
+            aria-label="Share on Facebook"
           >
             Facebook
           </button>
           <button
             onClick={() => shareToSocial('linkedin')}
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
+            aria-label="Share on LinkedIn"
           >
             LinkedIn
           </button>
@@ -92,6 +100,7 @@ function ShareButton() {
             <button
               onClick={copyToClipboard}
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-white/80 hover:bg-white/10 transition"
+              aria-label="Copy link to clipboard"
             >
               <Copy className="h-3 w-3" />
               Copy Link

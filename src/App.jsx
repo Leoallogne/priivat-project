@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { initGA, trackPageView } from './utils/analytics.js'
 import ContactCTA from './components/ContactCTA.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
@@ -18,6 +19,11 @@ function App() {
     () => console.log('swiped right')
   )
   const { sendSignalNotification } = useNotifications()
+
+  useEffect(() => {
+    initGA()
+    trackPageView()
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
