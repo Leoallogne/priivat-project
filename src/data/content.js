@@ -8,34 +8,6 @@ export const links = [
     variant: 'vip',
     icon: Send,
   },
-  {
-    id: 'gc',
-    title: 'Grub Clipper & Daget',
-    href: '#',
-    variant: 'standard',
-    icon: ExternalLink,
-  },
-  {
-    id: 'yt',
-    title: 'Ronss Syndicate YT',
-    href: '#',
-    variant: 'standard',
-    icon: Youtube,
-  },
-  {
-    id: 'ig-baron',
-    title: 'Instagram Baron',
-    href: '#',
-    variant: 'standard',
-    icon: Instagram,
-  },
-  {
-    id: 'ig-dapeng',
-    title: 'Instagram Dapeng',
-    href: '#',
-    variant: 'standard',
-    icon: Instagram,
-  },
 ]
 
 export const testimonials = [

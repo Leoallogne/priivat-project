@@ -33,7 +33,7 @@ function LinkCard({ item }) {
         target="_blank"
         rel="noreferrer"
         onClick={() => trackEvent('Link', 'Click VIP', item.title)}
-        className={`${base} shimmer-overlay hover:brightness-110 ring-1 ring-electric/35 shadow-[0_0_0_1px_rgba(0,122,255,0.22),0_0_40px_rgba(0,122,255,0.18)] transition-transform hover:scale-1.02`}
+        className={`${base} shimmer-overlay hover:brightness-110 ring-1 ring-electric/35 shadow-[0_0_0_1px_rgba(0,122,255,0.22),0_0_40px_rgba(0,122,255,0.18)] hover:shadow-[0_0_60px_rgba(0,122,255,0.28)] transition-transform hover:scale-[1.03]`}
         aria-label={`${item.title} - VIP Access`}
       >
         <div className="absolute inset-0 bg-linear-to-b from-electric/15 via-transparent to-transparent" />

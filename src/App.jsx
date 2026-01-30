@@ -5,11 +5,8 @@ import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import Links from './components/Links.jsx'
 import MarketStats from './components/MarketStats.jsx'
-import PerformanceChart from './components/PerformanceChart.jsx'
 import Philosophy from './components/Philosophy.jsx'
-import RecentWins from './components/RecentWins.jsx'
 import ShareButton from './components/ShareButton.jsx'
-import Testimonials from './components/Testimonials.jsx'
 import { useSwipeGestures } from './hooks/useSwipeGestures.js'
 import { useNotifications } from './hooks/useNotifications.js'
 
@@ -48,17 +45,11 @@ function App() {
             >
               <Header />
               
-              <Links />
-              
               <Philosophy />
               
-              <PerformanceChart />
-              
-              <RecentWins />
+              <Links />
               
               <MarketStats />
-              
-              <Testimonials />
               
               <ContactCTA />
               

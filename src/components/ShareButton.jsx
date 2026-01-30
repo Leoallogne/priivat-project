@@ -5,13 +5,13 @@ import { trackEvent } from '../utils/analytics'
 function ShareButton() {
   const [copied, setCopied] = useState(false)
   const shareUrl = window.location.href
-  const shareText = "Join Ronss Traders Syndicate - Premium Trading Signals with 87%+ Win Rate"
+  const shareText = "Join odfTrade - Premium Trading Signals with 87%+ Win Rate"
 
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Ronss Traders Syndicate',
+          title: 'odfTrade',
           text: shareText,
           url: shareUrl
         })
