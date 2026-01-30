@@ -33,11 +33,20 @@ function LinkCard({ item }) {
         target="_blank"
         rel="noreferrer"
         onClick={() => trackEvent('Link', 'Click VIP', item.title)}
-        className={`${base} shimmer-overlay hover:brightness-110 ring-1 ring-electric/35 shadow-[0_0_0_1px_rgba(0,122,255,0.22),0_0_40px_rgba(0,122,255,0.18)] hover:shadow-[0_0_60px_rgba(0,122,255,0.28)] transition-transform hover:scale-[1.03]`}
+        className={`${base} ring-1 ring-electric/35 shadow-[0_0_0_1px_rgba(0,122,255,0.22),0_0_40px_rgba(0,122,255,0.18)]`}
+        whileHover={{ scale: 1.03, y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 400, damping: 15 }}
         aria-label={`${item.title} - VIP Access`}
       >
+        <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 z-10"
+            initial={{ translateX: "-100%" }}
+            whileHover={{ translateX: "200%" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+        />
         <div className="absolute inset-0 bg-linear-to-b from-electric/15 via-transparent to-transparent" />
-        <div className="relative flex items-center justify-between gap-3 px-4 py-4">
+        <div className="relative flex items-center justify-between gap-3 px-4 py-4 z-20">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5">
               <Icon className="h-5 w-5 text-electric" />
@@ -46,7 +55,7 @@ function LinkCard({ item }) {
               <div className="text-sm font-semibold tracking-wide text-white">
                 {item.title}
               </div>
-              <div className="mt-1 text-xs text-white/60">Telegram access • Limited</div>
+              <div className="mt-1 text-xs text-white/60">Telegram access • FREE</div>
             </div>
           </div>
           <div className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5">
@@ -64,7 +73,10 @@ function LinkCard({ item }) {
       target={item.href === '#' ? undefined : '_blank'}
       rel={item.href === '#' ? undefined : 'noreferrer'}
       onClick={() => trackEvent('Link', 'Click Standard', item.title)}
-      className={`${base} hover:brightness-110 hover:bg-white/7 hover:border-white/15 transition-transform hover:scale-1.02`}
+      className={`${base} hover:bg-white/7 hover:border-white/15`}
+      whileHover={{ scale: 1.02, x: 4 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
       aria-label={item.title}
     >
       <div className="flex items-center justify-between gap-3 px-4 py-4">

@@ -3,36 +3,13 @@ import { ExternalLink, Instagram, Send, Youtube } from 'lucide-react'
 export const links = [
   {
     id: 'vip',
-    title: '🚀 JOIN VIP SIGNAL FREE',
+    title: '🚀 Join Discussion OdfTrade Public',
     href: 'https://t.me/OdfTrade',
     variant: 'vip',
     icon: Send,
   },
 ]
 
-export const testimonials = [
-  {
-    id: 'client1',
-    name: 'Alex Chen',
-    role: 'Day Trader',
-    content: 'Signal accuracy is insane. Risk management guidance saved my portfolio during the last correction.',
-    rating: 5,
-  },
-  {
-    id: 'client2',
-    name: 'Sarah Williams',
-    role: 'Swing Trader',
-    content: 'Order flow analysis here is next level. Finally found a team that actually delivers consistent results.',
-    rating: 5,
-  },
-  {
-    id: 'client3',
-    name: 'Marcus Johnson',
-    role: 'Position Trader',
-    content: 'VIP signals changed the game. Clear entries, exits, and position sizing—no more guesswork.',
-    rating: 5,
-  },
-]
 
 export const recentWins = [
   {
