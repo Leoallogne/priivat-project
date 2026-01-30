@@ -73,7 +73,7 @@ function Header() {
         >
             <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">
-                odfTrade
+                OdfTrade
               </span>
             </h1>
             <motion.div 
