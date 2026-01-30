@@ -30,7 +30,7 @@ function Header() {
         </div>
 
         <h1 className="mt-5 text-2xl font-semibold tracking-tight bg-linear-to-b from-white to-white/65 bg-clip-text text-transparent">
-          odfTrade
+          OdfTrade
         </h1>
 
         
