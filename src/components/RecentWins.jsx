@@ -98,7 +98,7 @@ function RecentWins() {
 
         <div className="mt-4 text-center">
           <a
-            href="https://t.me/OdfTrade"
+            href="https://t.me/+O3GZt-QDQlY0YTM1"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-electric/50 bg-electric/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-electric/20 hover:border-electric/60"

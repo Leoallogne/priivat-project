@@ -4,7 +4,7 @@ export const links = [
   {
     id: 'vip',
     title: '🚀 Join Discussion OdfTrade Public',
-    href: 'https://t.me/OdfTrade',
+    href: 'https://t.me/+O3GZt-QDQlY0YTM1',
     variant: 'vip',
     icon: Send,
   },
